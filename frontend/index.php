@@ -1,13 +1,13 @@
-<!-- <?php 
+<!-- <?php
 
-	echo("<H1><center>Hi</center></H1>");
+echo ("<H1><center>Hi</center></H1>");
 
- ?> -->
+?> -->
 
 <!DOCTYPE html>
 <html>
 
-	<?php include "components/head.php" ?>
+<?php include "components/head.php" ?>
 
 <body>
 
@@ -15,4 +15,5 @@
 	<?php include "components/product.php" ?>
 
 </body>
+
 </html>
