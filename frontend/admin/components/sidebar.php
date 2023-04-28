@@ -26,6 +26,12 @@
                   <p>Add Product</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="./addSliceShow.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add addSliceShow</p>
+                </a>
+              </li>
             </ul>
           </li>
 
