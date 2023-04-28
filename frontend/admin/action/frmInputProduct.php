@@ -3,7 +3,7 @@
   <?php 
 
     include "./database.php";
-    $con = mysql_connect(host, user , password , db) or die("cannot connect");
+    
 
 
    ?>
