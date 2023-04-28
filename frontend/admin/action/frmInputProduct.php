@@ -49,7 +49,11 @@
                   </div>
                   <div class="form-group">
                     <label for="Price">Product Price</label>
-                    <input type="text" class="form-control" id="Price" placeholder="Enter Product Price">
+                    <input type="text" class="form-control" id="pprice" placeholder="Enter Product Price">
+                  </div>
+                  <div class="form-group">
+                    <label for="Price">Product descreption</label>
+                    <input type="text" class="form-control" id="pdes" placeholder="Enter Product Description">
                   </div>
                   <div class="form-group">
                     <label for="exampleInputFile">File input</label>
