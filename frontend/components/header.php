@@ -1,7 +1,6 @@
 <?php 
 
     include "./admin/database.php";
-    $con = mysqli_connect(host, user , password , db) or die("cannot connect");
     // if ($con == 1) {
     // 	echo "DB is connected";
     // }else{

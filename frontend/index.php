@@ -1,10 +1,12 @@
-<!-- <?php 
-
-	echo("<H1><center>Hi</center></H1>");
-
- ?> 
-
 <!DOCTYPE html>
+
+<?php 
+
+	// php goes here
+
+?> 
+
+
 <html>
 
 <?php include "components/head.php" ?>
