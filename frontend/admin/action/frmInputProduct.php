@@ -1,6 +1,42 @@
-  <!-- Content Wrapper. Contains page content -->
+<?php
+
+  require("../database.php");
+
+  if ($_POST) {
+    $pname = trim($_POST['pName']);
+    $price = trim($_POST['price']);
+    $img = trim($_POST['img']);
+    $des = trim($_POST['description']);
+
+    try{
+
+      $sql ='INSERT INTO tblProduct (pName, price, img, description)
+            Value (:pname, :price, :img, :description)';
+
+      $stmt = $conn->prepare($sql);
+      $stmt->bindParam(":pName", $pname);      
+      $stmt->bindParam(":price", $price); 
+      $stmt->bindParam(":img", $img); 
+      $stmt->bindParam(":description", $des); 
+
+      $stmt->execute();
+
+      if($stmt->rowCount()){
+        header("location: create.php?status=created");
+        exit();
+      }
+      header("location: create.php?status=fail_created");
+
+    }catch(Exception $e){
+      
+    }
+
+  }
 
 
+?>
+
+<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
