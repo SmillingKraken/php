@@ -44,11 +44,11 @@ try {
             <?php if ($result->rowCount() > 0) : ?>
                 <?php foreach ($result as $p) : ?>
                     <tr>
-                        <th scope="row"><?= $p["pid"] ?></th>
-                        <td><?= $p["pName"] ?></td>
-                        <td><?= $p["price"] ?></td>
-                        <td><?= $p["description"] ?></td>
-                        <td><?= $p["img"] ?></td>
+                        <th scope="row"><?= $p['pid'] ?></th>
+                        <td><?= $p['pName'] ?></td>
+                        <td><?= $p['price'] ?></td>
+                        <td><?= $p['description'] ?></td>
+                        <td><?= $p['img'] ?></td>
                     </tr>
                 <?php endforeach ?>
             <?php endif ?>

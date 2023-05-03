@@ -1,8 +1,8 @@
 <?php 
 
-	$user = "root";
-	$pass = "";
-	$dsn = "mysql:host=localhost;dbname=mvc_db";
+	const user = "root";
+	const pass = "";
+	const dsn = "mysql:host=localhost;dbname=mvc_db";
 
 	try {
 
