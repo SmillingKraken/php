@@ -1,13 +1,19 @@
 <?php 
 
-	$host = "localhost";
-	$pass = "";
-	$user = "root";
-	$db = "mvc_db";
+	const user = "root";
+	const pass = "";
+	const dsn = "mysql:host=localhost;dbname=mvc_db";
 
-	// define("host" , "localhost");
-	// define("user" , "root");
-	// define("password", "");
-	// define("db", "mvc_db");
+	try {
+
+		$conn = new PDO(dsn, user, pass);
+		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+		echo "connect";
+
+	} catch (Exception $e) {
+		echo " Error ".$e->getMessage();
+		exit(); 
+	}
 
  ?>

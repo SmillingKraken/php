@@ -1,13 +1,3 @@
-<?php 
-
-    include "./admin/database.php";
-    // if ($con == 1) {
-    // 	echo "DB is connected";
-    // }else{
-    // 	echo "DB is failed to connect";
-    // }
-   ?>
-
 <header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
