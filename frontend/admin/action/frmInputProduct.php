@@ -1,12 +1,25 @@
   <!-- Content Wrapper. Contains page content -->
 
-  <?php 
+  <?php
 
-    include "./database.php";
-    
+  $user = "root";
+  $pass = "";
+  $dsn = "mysql:host=localhost;dbname=mvc_db";
+
+  try {
+
+    $conn = new PDO(dsn, user, pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    echo "connect";
+  } catch (Exception $e) {
+    echo " Error " . $e->getMessage();
+    exit();
+  }
 
 
-   ?>
+
+  ?>
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -44,26 +57,26 @@
               <form>
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="name">Product Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Product Name">
+                    <label for="pName">Product Name</label>
+                    <input type="text" class="form-control" id="pName" placeholder="Enter Product Name">
                   </div>
                   <div class="form-group">
-                    <label for="Price">Product Price</label>
-                    <input type="text" class="form-control" id="pprice" placeholder="Enter Product Price">
+                    <label for="price">Product Price</label>
+                    <input type="text" class="form-control" id="price" placeholder="Enter Product Price">
                   </div>
                   <div class="form-group">
-                    <label for="Price">Product descreption</label>
-                    <input type="text" class="form-control" id="pdes" placeholder="Enter Product Description">
+                    <label for="description">Product descreption</label>
+                    <input type="text" class="form-control" id="description" placeholder="Enter Product Description">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputFile">File input</label>
+                    <label for="img">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <input type="file" class="custom-file-input" id="img">
+                        <label class="custom-file-label" for="img">Choose file</label>
                       </div>
                       <div class="input-group-append">
-                        <span class="input-group-text">Upload</span>
+                        <input type="submit" class="input-group-text">
                       </div>
                     </div>
                   </div>
