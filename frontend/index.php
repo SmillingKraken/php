@@ -5,6 +5,7 @@
 // php goes here
 //thak is gae 2
 
+//tosa is gay
 ?> 
 
 
