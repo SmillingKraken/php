@@ -72,7 +72,7 @@ if ($_POST) {
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" class="insertProduct" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="pName">Product Name</label>
