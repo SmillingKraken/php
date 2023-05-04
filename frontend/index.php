@@ -3,6 +3,7 @@
 <?php
 
 // php goes here
+//thak is gae
 
 ?>
 
