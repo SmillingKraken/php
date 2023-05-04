@@ -1,37 +1,40 @@
 <?php
-require("./database.php");
+//require("./database.php");
+$conn = mysqli_connect("localhost", "root", "", "mvc_db");
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 
-
-if ($_POST) {
+if(isset($_POST)) {
  
   //
 
-  $pname = trim($_POST['pName']);
-  $price = trim($_POST['price']);
-  $des = trim($_POST['description']);
+  $pname = $_POST['pName'];
+  $price = $_POST['price'];
+  $des = $_POST['description'];
+  
+//   try {
 
-  try {
+//     $sql = 'INSERT INTO tblProduct (pName, price, img, description)
+//             Value (:pname, :price, :img, :description)';
 
-    $sql = 'INSERT INTO tblProduct (pName, price, img, description)
-            Value (:pname, :price, :img, :description)';
+//     $stmt = $conn->prepare($sql);
+//     $stmt->bindParam(":pName", $pname);
+//     $stmt->bindParam(":price", $price);
+//     $stmt->bindParam(":img", $img);
+//     $stmt->bindParam(":description", $des);
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":pName", $pname);
-    $stmt->bindParam(":price", $price);
-    $stmt->bindParam(":img", $img);
-    $stmt->bindParam(":description", $des);
+//     $stmt->execute();
 
-    $stmt->execute();
+//     if ($stmt->rowCount()) {
+//       header("location: create.php?status=created");
+//       exit();
+//     }
+//     header("location: create.php?status=fail_created");
 
-    if ($stmt->rowCount()) {
-      header("location: create.php?status=created");
-      exit();
-    }
-    header("location: create.php?status=fail_created");
+//   } catch (Exception $e) {
 
-  } catch (Exception $e) {
-
-  }
+//   }
 
 }
 
@@ -72,7 +75,7 @@ if ($_POST) {
             </div>
             <!-- /.card-header -->
             <!-- form start -->
-            <form method="post" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data">
               <div class="card-body">
                 <div class="form-group">
                   <label for="pName">Product Name</label>
@@ -95,7 +98,7 @@ if ($_POST) {
                       <label class="custom-file-label" name="img" for="img">Choose file</label>
                     </div>
                     <div class="input-group-append">
-                      <input type="submit" class="input-group-text">
+                      <input type="submit" id="submit" name="submit" class="input-group-text">
                     </div>
                   </div>
                 </div>
