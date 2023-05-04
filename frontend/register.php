@@ -43,7 +43,6 @@ if(isset($_POST["submit"])){
 
 <body>
 
-
     <form class="container frm-container"  action="" method="post" autocomplete="off">
         <div class="container mb-3 col-4">
             <h2>Register</h2>
