@@ -74,22 +74,22 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="pName">Product Name</label>
-                    <input type="text" class="form-control" id="pName" placeholder="Enter Product Name">
+                    <input type="text" class="form-control" name="pName" id="pName" placeholder="Enter Product Name">
                   </div>
                   <div class="form-group">
                     <label for="price">Product Price</label>
-                    <input type="text" class="form-control" id="price" placeholder="Enter Product Price">
+                    <input type="text" class="form-control" name="price" id="price" placeholder="Enter Product Price">
                   </div>
                   <div class="form-group">
                     <label for="description">Product descreption</label>
-                    <input type="text" class="form-control" id="description" placeholder="Enter Product Description">
+                    <input type="text" class="form-control" name="description" id="description" placeholder="Enter Product Description">
                   </div>
                   <div class="form-group">
                     <label for="img">File input</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input type="file" class="custom-file-input" id="img">
-                        <label class="custom-file-label" for="img">Choose file</label>
+                        <label class="custom-file-label" name="img" for="img">Choose file</label>
                       </div>
                       <div class="input-group-append">
                         <input type="submit" class="input-group-text">
