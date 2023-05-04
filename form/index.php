@@ -18,6 +18,26 @@ if (isset($_POST["submit"])) {
     $price = $_POST["price"];
     $img = $_POST["img"];
     $description = $_POST["description"];
+
+
+    //
+    $img = $_FILES['img']['name'];
+    echo $img;
+
+    $tempname = $_FILES["img"]["tmp_name"];
+    $folder = "./image/" . $img;
+
+    // Get all the submitted data from the form
+    $sql = "INSERT INTO image (filename) VALUES ('$img')";
+
+    // Execute query
+    //mysqli_query($db, $sql);
+
+    // Now let's move the uploaded image into the folder: image
+    
+
+
+    //
     //$duplicate = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$username' OR email = '$email'");
 //   if(mysqli_num_rows($duplicate) > 0){
 //     echo
@@ -39,6 +59,11 @@ if (isset($_POST["submit"])) {
     mysqli_query($conn, $query);
     echo
         "<script> alert('Registration Successful'); </script>";
+        if (move_uploaded_file($tempname, $folder)) {
+            echo "<h3>  Image uploaded successfully!</h3>";
+        } else {
+            echo "<h3>  Failed to upload image!</h3>";
+        }
 }
 ?>
 
@@ -56,12 +81,12 @@ if (isset($_POST["submit"])) {
         </div>
         <div class="container mb-3 col-4">
             <label for="price" class="form-label">price</label>
-            <input type="text" class="form-control" name="price" id="price" required value=""
+            <input type="text   " class="form-control" name="price" id="price" required value=""
                 aria-describedby="emailHelp">
         </div>
         <div class="container mb-3 col-4">
             <label for="img" class="form-label">img</label>
-            <input type="text" class="form-control" name="img" id="img" required value="">
+            <input type="file" class="form-control" name="img" id="img" required value="">
         </div>
         <div class="container mb-3 col-4">
             <label for="description" class="form-label">description</label>
