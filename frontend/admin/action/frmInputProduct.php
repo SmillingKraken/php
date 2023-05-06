@@ -38,7 +38,7 @@ if (isset($_POST["submit"])) {
         alert('Image Size Is Too Large');
       </script>
       ";
-      
+
     }
     else{
       $newImageName = uniqid();
@@ -55,40 +55,14 @@ if (isset($_POST["submit"])) {
         document.location.href = 'data.php';
       </script>
       ";
+
     }
   }
-
-  $pname = $_POST['pName'];
-  $price = $_POST['price'];
-  $des = $_POST['description'];
-  
-//   try {
-
-//     $sql = 'INSERT INTO tblProduct (pName, price, img, description)
-//             Value (:pname, :price, :img, :description)';
-
-//     $stmt = $conn->prepare($sql);
-//     $stmt->bindParam(":pName", $pname);
-//     $stmt->bindParam(":price", $price);
-//     $stmt->bindParam(":img", $img);
-//     $stmt->bindParam(":description", $des);
-
-//     $stmt->execute();
-
-//     if ($stmt->rowCount()) {
-//       header("location: create.php?status=created");
-//       exit();
-//     }
-//     header("location: create.php?status=fail_created");
-
-//   } catch (Exception $e) {
-
-//   }
-
 }
 
 
 ?>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
