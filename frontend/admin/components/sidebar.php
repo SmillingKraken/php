@@ -23,13 +23,13 @@
               <li class="nav-item">
                 <a href="./addProduct.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Product</p>
+                  <p>Product</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="./addSliceShow.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add addSliceShow</p>
+                  <p>SliceShow</p>
                 </a>
               </li>
             </ul>
