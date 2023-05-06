@@ -38,6 +38,7 @@ if (isset($_POST["submit"])) {
         alert('Image Size Is Too Large');
       </script>
       ";
+      
     }
     else{
       $newImageName = uniqid();
