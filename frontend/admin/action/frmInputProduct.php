@@ -1,30 +1,41 @@
 <?php
-require("../database.php");
+//require("./database.php");
+$conn = mysqli_connect("localhost", "root", "", "mvc_db");
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
 
-// $pname = $_POST['pName'];
-// $price = $_POST['price'];
-// $des = $_POST['description'];
+if(isset($_POST)) {
+ 
+  //
 
-try {
+  // $pname = $_POST['pName'];
+  // $price = $_POST['price'];
+  // $des = $_POST['description'];
+  
+  // mix // bos eng os haii?
+//   try {
 
-  $sql = 'INSERT INTO tblProduct (pName, price, img, description)
-            Value (:pname, :price, :img, :description)';
+//     $sql = 'INSERT INTO tblProduct (pName, price, img, description)
+//             Value (:pname, :price, :img, :description)';
 
-  $stmt = $conn->prepare($sql);
-  $stmt->bindParam(":pName", $pname);
-  $stmt->bindParam(":price", $price);
-  $stmt->bindParam(":img", $img);
-  $stmt->bindParam(":description", $des);
+//     $stmt = $conn->prepare($sql);
+//     $stmt->bindParam(":pName", $pname);
+//     $stmt->bindParam(":price", $price);
+//     $stmt->bindParam(":img", $img);
+//     $stmt->bindParam(":description", $des);
 
-  $stmt->execute();
+//     $stmt->execute();
 
-  if ($stmt->rowCount()) {
-    header("location: create.php?status=created");
-    exit();
-  }
-  header("location: create.php?status=fail_created");
+//     if ($stmt->rowCount()) {
+//       header("location: create.php?status=created");
+//       exit();
+//     }
+//     header("location: create.php?status=fail_created");
 
-} catch (Exception $e) {
+//   } catch (Exception $e) {
+
+//   }
 
 }
 
@@ -32,6 +43,7 @@ try {
 
 
 ?>
+
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -49,6 +61,7 @@ try {
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
+    
     </div><!-- /.container-fluid -->
   </div>
   <!-- /.content-header -->
@@ -68,7 +81,6 @@ try {
             <!-- /.card-header -->
             <!-- form start -->
             <form method="post" class="frmInputProduct" enctype="multipart/form-data">
-            
               <div class="card-body">
                 <div class="form-group">
                   <label for="pName">Product Name</label>
@@ -88,10 +100,15 @@ try {
                   <div class="input-group">
                     <div class="custom-file">
                       <input type="file" class="custom-file-input" id="img_prod" name="img">
-                      <label class="custom-file-label" for="img_prod">Choose file</label>
+                      <label class="custom-file-label" for="img">Choose file</label>
+                    </div>
+                    <div class="input-group-append">
+                      <input type="submit" id="submit" name="submit" class="input-group-text">
                     </div>
 
-                    <input type="text" name="txt_imgname" id="txt_imgname" style="width: 350px;">
+                    <input type="hidden" name="txt_imgname" id="txt_imgname" style="width: 350px;">
+
+                    <input id="button" type="button" name="btn_insert" value="Save Product" class="btn_save">
 
                   </div>
                 </div>
@@ -103,74 +120,80 @@ try {
               </div>
             </form>
             <!-- /.form end-->
+            
+          <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+          <script>
+            
+            $('.btn_save').click(function(){
 
-            <script src = "https://code.jquery.com/jquery-3.3.1.min.js"></script>
-            <script src="./jquery-3.2.1.min.js"></script>
-            <script>
+            var frm = $(this).closest('form.frmInputProduct');
+            var frm_data = new FormData(frm[0]);
 
-              $('.btn_save').click(function () {
+            var  name = $('#pName');
+            var price = $('#price');
+            var img = $('#txt_imgname');
+            var desc = $('#description');
 
-                var frm = $(this).closest('form.frmInputProduct');
-                var frm_data = new FormData(frm[0]);
-
-                var name = $('#pName');
-                var price = $('#price');
-                var img = $('#txt_imgname');
-                var desc = $('#description');
-
-                if (name.val() == '') {
-                  alert('Please enter product name!');
-                  name.focus();
-                } else if (price.val() == '') {
-                  alert('Please enter price!');
-                  price.focus();
-                } else if (img.val() == '') {
-                  alert('Please select product picture!');
-                  img.focus();
-                } else {
-                  $.ajax({
-                    url: 'insert_act.php',
-                    type: 'POST',
-                    data: frm_data,
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType: "json",
-                    success: function (data) {
+            if(name.val() == ''){
+              alert('Please enter product name!');
+              name.focus();
+            }else if(price.val() == ''){
+              alert('Please enter price!');
+              price.focus();
+            }else if(img.val() == ''){
+              alert('Please select product picture!');
+              img.focus();
+            }else{
+              $.ajax({
+                    url:'insert_act.php',
+                    type:'POST',
+                    data:frm_data,
+                    contentType:false,
+                    cache:false,
+                    processData:false,
+                    dataType:"json",
+                    success:function(data)
+                    {
                       alert(date.msg);
                       window.location.href = "frmInputProduct.php"
                     }
-                  });
-                }
-
               });
+            }
 
-              $('body').on('change', '#img_prod', function () {
-                var eThis = $(this);
-                var img_box = eThis.parent();
-                var img_name = $('body').find('#txt_imgname');
-                var frm = $(this).closest('form.frmInputProduct');
-                var frm_data = new FormData(frm[0]);
-                //alert("Bokalo");
+            });
+
+            $('body').on('change','#img_prod', function(){
+              var eThis = $(this);
+              var img_box = eThis.parent();
+              var img_name = $('body').find('#txt_imgname');
+              var frm = $(this).closest('form.frmInputProduct');
+              var frm_data = new FormData(frm[0]);
                 $.ajax({
-                  url: 'upl-img.php',
-                  type: 'POST',
-                  data: frm_data,
-                  contentType: false,
-                  cache: false,
-                  processData: false,
-                  dataType: "json",
-                  success: function (data) {
-                    alert('Image inserted successfully');
-                    img_name.val(data.image);
-                  }
+                      url:'upl-img.php',
+                      type:'POST',
+                      data:frm_data,
+                      contentType:false,
+                      cache:false,
+                      processData:false,
+                      dataType:"json",
+                      success:function(data)
+                      {
+                        // alert('Image inserted successfully');
+                          img_name.val(data.image);
+                      }
                 });
-              });
+            });
             </script>
 
           </div>
           <!-- /.card -->
         </div>
+    </form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
         <!-- /.col-md-6-->
       </div>
       <!-- /.row -->

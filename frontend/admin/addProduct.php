@@ -15,6 +15,8 @@
 
 	
   	<?php include "action/frmInputProduct.php" ?>
+	<?php include "action/tblProduct.php" ?>
+
 
 	<?php include "components/footer.php" ?>
 </div>
