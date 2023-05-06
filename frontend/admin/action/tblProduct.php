@@ -5,7 +5,7 @@ try {
     $sql = "SELECT * FROM tblproduct";
     $result = $conn->query($sql);
 } catch (Exception $e) {
-    echo "Error " . $e->getMessage();
+    //echo "Error " . $e->getMessage();
     exit();
 }
 
@@ -48,7 +48,7 @@ try {
                         <td><?= $p['pName'] ?></td>
                         <td><?= $p['price'] ?></td>
                         <td><?= $p['description'] ?></td>
-                        <td><?= $p['img'] ?></td>
+                        <td><?= $p['img'] ?>    </td>
                     </tr>
                 <?php endforeach ?>
             <?php endif ?>
